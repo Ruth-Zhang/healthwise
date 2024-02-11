@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-export default function SettingsScreen() {
+
+export default function SearchScreen() {
     return (
         <View style={styles.container}>
-            
-          <Text>Setting Screen</Text>
+         <Text>search</Text>
+          
           <StatusBar style="auto" />
         </View>
     );
@@ -18,3 +19,4 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
   });
+  
