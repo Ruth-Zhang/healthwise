@@ -24,7 +24,7 @@ const screenOptions= {
 }
 
 export default function App() {
-  return ( <>
+  return (
     <NavigationContainer>
         <Tab.Navigator>
             <Tab.Screen name="Search" component={SearchScreen} options={{
@@ -32,16 +32,6 @@ export default function App() {
                 return (
                  <View style={{alignItems: "center", justifyContent: "center"}}>
                  <AntDesign name="search1" size={24} color={focused ? "#16247d": "#111"} />
-             </View>
-                )
-              }
-            }}
-            />
-            <Tab.Screen name="Profile" component={ProfileScreen} options={{
-              tabBarIcon: ({focused})=>{
-                return (
-                 <View style={{alignItems: "center", justifyContent: "center"}}>
-                 <Feather name="user" size={24} color={focused ? "#16247d": "#111"} />
              </View>
                 )
               }
@@ -57,13 +47,18 @@ export default function App() {
               }
             }}
            />
+            <Tab.Screen name="Profile" component={ProfileScreen} options={{
+              tabBarIcon: ({focused})=>{
+                return (
+                 <View style={{alignItems: "center", justifyContent: "center"}}>
+                 <Feather name="user" size={24} color={focused ? "#16247d": "#111"} />
+             </View>
+                )
+              }
+            }}
+            />
         </Tab.Navigator>
     </NavigationContainer>
-
-    <View style={styles.container}>
-      <Text>Welcome!</Text>
-      <StatusBar style="auto" />
-    </View> </>
   );
 }
 

@@ -12,6 +12,8 @@
     "@expo/webpack-config": "^19.0.0",
     "@react-navigation/bottom-tabs": "^6.5.11",
     "@react-navigation/native": "^6.1.9",
+    "crypto": "npm:crypto-browserify",
+    "crypto-browserify": "^3.12.0",
     "expo": "^50.0.5",
     "expo-status-bar": "~1.11.1",
     "expo-updates": "~0.24.9",
@@ -21,10 +23,14 @@
     "react-native-safe-area-context": "4.8.2",
     "react-native-screens": "~3.29.0",
     "react-native-vector-icons": "^10.0.3",
-    "react-native-web": "~0.19.6"
+    "react-native-web": "~0.19.6",
+    "stream": "npm:stream-browserify"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
+  },
+  "browser": {
+    "crypto": false
   },
   "private": true
 }
