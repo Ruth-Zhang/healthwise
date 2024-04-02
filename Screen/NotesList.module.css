@@ -66,7 +66,7 @@ textarea:focus {
 }
 
 .save:hover {
-	background-color: #ededed;
+	background-color: #edededfc;
 	cursor: pointer;
 }
 

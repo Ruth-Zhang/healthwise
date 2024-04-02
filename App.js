@@ -1,14 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput,KeyboardAvoidingView,Platform } from 'react-native';
 import SearchScreen from "./Screen/SearchScreen";
 import ProfileScreen from "./Screen/ProfileScreen";
-import MapScreen from "./Screen/MapScreen";
-import NoteScreen from "./Screen/NoteScreen"
+import NoteScreen from "./Screen/NoteScreen";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import {AntDesign} from '@expo/vector-icons';
 import {Feather} from '@expo/vector-icons';
-import {MaterialIcons} from '@expo/vector-icons'
+import {MaterialIcons} from '@expo/vector-icons';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Startscreen from './Screen/Login screen/Startscreen';
+import login from './Screen/Login screen/login';
+import register from './Screen/Login screen/register';
+import maps from './Screen/Map screen/map';
+import Forgetpassword from './Screen/Login screen/Forgetpassword';
+import Setnewpassword from './Screen/Login screen/Setnewpassword';
+
+
+const Stack=createNativeStackNavigator ();
 
 const Tab = createBottomTabNavigator();
 const screenOptions= {
@@ -27,7 +36,15 @@ const screenOptions= {
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <NavigationContainer style={{backgroundColor: '#fff'}}>
+        <Stack.Navigator initialRouteName='Startscreen'>
+            <Stack.Screen name='Startscreen' component={Startscreen} />
+            <Stack.Screen name='login' component={login}/>
+            <Stack.Screen name='register' component={register}/>
+            <Stack.Screen name='maps' component={maps}/>
+            <Stack.Screen name='Forgetpassword' component={Forgetpassword}/>
+            <Stack.Screen name='Setnewpassword' component={Setnewpassword}/>
+        </Stack.Navigator>
         <Tab.Navigator>
             <Tab.Screen name="Search" component={SearchScreen} options={{
               tabBarIcon: ({focused})=>{
@@ -39,7 +56,7 @@ export default function App() {
               }
             }}
             />
-            <Tab.Screen name="Map" component={MapScreen} options={{
+            <Tab.Screen name="Map" component={maps} options={{
               tabBarIcon: ({focused})=>{
                 return (
                  <View style={{alignItems: "center", justifyContent: "center"}}>
