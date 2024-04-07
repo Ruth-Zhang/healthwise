@@ -1,5 +1,6 @@
-import {SafeAreaView,TouchableOpacity,StyleSheet,View,Container,Row, Col} from "react-native-web";
-  import { MdArrowBack } from "react-icons/md";
+import {SafeAreaView,TouchableOpacity,StyleSheet,View,Container,Row, Col} from "react-native";
+import { MdArrowBack } from "react-icons/md";
+
   
 export default function SuggestChange({ onBackPress }) {
     return (
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
 export function ContactUs() {
     return (
       <View>
-        <form className="contact__form w-100">
+        {/* <form className="contact__form w-100">
           <input
             className="form-control"
             id="name"
@@ -57,7 +58,7 @@ export function ContactUs() {
           <button className="btn ac_btn" type="submit">
             Send
           </button>
-        </form>
+        </form> */}
       </View>
     );
 }

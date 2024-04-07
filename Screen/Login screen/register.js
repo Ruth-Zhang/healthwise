@@ -1,8 +1,10 @@
+import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, TextInput,KeyboardAvoidingView,Platform, Pressable} from 'react-native';
 import { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
- export default function register () {
+ export default function register ({navigation}) {
   const [email, setEmail]=useState("");
+  const [username, setUsername]=useState("");
   const [password, setPassword]=useState("");
   const [errors, setErrors]= useState({});
   const validateForm = () => {
@@ -19,24 +21,25 @@ import { SafeAreaView } from 'react-native-safe-area-context';
       setPassword("");
       setEmail("");
       setErrors({});
+      navigation.navigate ('tabnavigator')
     }
   };
     return(
         <SafeAreaView>
-            <View style={styles.form}>
+          <View style={styles.form}>
           <Text style={styles.label}>email address</Text>
-          <TextInput style={styles.input} placeholder="Enter your email" />
+          <TextInput style={styles.input} placeholder="Enter your email" value={email} onChangeText={setEmail}/>
           {errors.email? <text style={styles.errorText}>{errors.email}</text> : null}
           <Text style={styles.label}>username</Text>
-          <TextInput style={styles.input} placeholder="set your username" />
+          <TextInput style={styles.input} placeholder="set your username" value={username} onChangeText={setUsername}/>
           {errors.username ? <text style={styles.errorText}>{errors.username}</text> : null}
           <Text style={styles.label}>password</Text>
-          <TextInput style={styles.input} placeholder="set your password" />
+          <TextInput style={styles.input} placeholder="set your password" value={password} onChangeText={setPassword}/>
           {errors.password ? <text style={styles.errorText}>{errors.password}</text> : null}
           <Text style={styles.label}>birthday</Text>
-          <TextInput style={styles.input} placeholder="dd/mm/yy" />
+          <TextInput style={styles.input} placeholder="dd/mm/yy"/>
           <View style={styles.press}>
-          <Pressable onPress={() => handleSubmit} style={styles.button}>
+          <Pressable onPress={() => handleSubmit ()} style={styles.button}>
             <Text style={styles.button}>  Create your account</Text>
           </Pressable>
           </View>

@@ -73,7 +73,7 @@ setInput(searchInput)
             </Callout>
             </Marker>
         ))}
-        <KeyboardAvoidingView>
+      
         <View style={{position: 'absolute', top:70, width: 400, display: 'flex' }}>
     <TextInput value={input} onChangeText={(text)=> {setInput(text);filterMarker(text)}}
       style={{ 
@@ -90,7 +90,7 @@ setInput(searchInput)
       placeholder={'Search'}
       placeholderTextColor={'#666'}/>
     </View>
-    </KeyboardAvoidingView>
+    
       </MapView>
     </View>
     
@@ -118,3 +118,4 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   }
 });
+  

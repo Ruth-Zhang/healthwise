@@ -1,16 +1,8 @@
 import React, { useState } from "react";
 import {StyleSheet,SafeAreaView,View,ScrollView,Text,TouchableOpacity,Switch,Image,} from "react-native";
 import FeatherIcon from "react-native-vector-icons/Feather";
-import { FaBeer, FaCommentDots, FaEye } from "react-icons/fa";
-import { FaLocationPinLock } from "react-icons/fa6";
-import { MdMarkEmailUnread } from "react-icons/md";
-import { IoNotifications } from "react-icons/io5";
-import { TbReportSearch } from "react-icons/tb";
-import { IoMdContact } from "react-icons/io";
-import { BsPencilSquare } from "react-icons/bs";
-import { IoText } from "react-icons/io5";
-import { MdOutlineRateReview } from "react-icons/md";
 import SuggestChange from "./Suggestchange";
+import { MaterialIcons, FontAwesome6, Ionicons,  } from '@expo/vector-icons'
 
 export default function Example() {
   const [form, setForm] = useState({
@@ -69,7 +61,7 @@ export default function Example() {
               style={styles.row}
             >
               <View style={[styles.rowIcon, { backgroundColor: "#fe9400" }]}>
-                <IoText color="#fff" name="globe" size={20} />
+                <Ionicons color="#fff" name="text" size={20} />
               </View>
 
               <Text style={styles.rowLabel}>Language</Text>
@@ -81,7 +73,7 @@ export default function Example() {
 
             <View style={styles.row}>
               <View style={[styles.rowIcon, { backgroundColor: "#007afe" }]}>
-                <FaEye color="#fff" name="moon" size={20} />
+                <FontAwesome6 color="#fff" name="eye" size={20} />
               </View>
 
               <Text style={styles.rowLabel}>Dark Mode</Text>
@@ -101,7 +93,7 @@ export default function Example() {
               style={styles.row}
             >
               <View style={[styles.rowIcon, { backgroundColor: "#32c759" }]}>
-                <FaLocationPinLock color="#fff" name="navigation" size={20} />
+                <FontAwesome6 color="#fff" name="location-pin-lock" size={20} />
               </View>
 
               <Text style={styles.rowLabel}>Location</Text>
@@ -113,7 +105,7 @@ export default function Example() {
 
             <View style={styles.row}>
               <View style={[styles.rowIcon, { backgroundColor: "#38C959" }]}>
-                <MdMarkEmailUnread color="#fff" name="at-sign" size={20} />
+                <MaterialIcons color="#fff" name="mark-email-unread" size={20} />
               </View>
 
               <Text style={styles.rowLabel}>Email Notifications</Text>
@@ -130,7 +122,7 @@ export default function Example() {
 
             <View style={styles.row}>
               <View style={[styles.rowIcon, { backgroundColor: "#38C959" }]}>
-                <IoNotifications color="#fff" name="bell" size={20} />
+                <Ionicons color="#fff" name="notifications" size={20} />
               </View>
 
               <Text style={styles.rowLabel}>Push Notifications</Text>
@@ -156,7 +148,7 @@ export default function Example() {
               style={styles.row}
             >
               <View style={[styles.rowIcon, { backgroundColor: "#8e8d91" }]}>
-                <TbReportSearch color="#fff" name="flag" size={20} />
+                <Ionicons color="#fff" name="search" size={20} />
               </View>
 
               <Text style={styles.rowLabel}>Suggest a change</Text>
@@ -173,7 +165,7 @@ export default function Example() {
               style={styles.row}
             >
               <View style={[styles.rowIcon, { backgroundColor: "#007afe" }]}>
-                <FaCommentDots color="#fff" name="mail" size={20} />
+                <FontAwesome6 color="#fff" name="comment-dots" size={20} />
               </View>
 
               <Text style={styles.rowLabel}>Contact Us</Text>
@@ -190,7 +182,7 @@ export default function Example() {
               style={styles.row}
             >
               <View style={[styles.rowIcon, { backgroundColor: "#32c759" }]}>
-                <MdOutlineRateReview color="#fff" name="star" size={20} />
+                <MaterialIcons color="#fff" name="rate-review" size={20} />
               </View>
 
               <Text style={styles.rowLabel}>Rate in App Store</Text>

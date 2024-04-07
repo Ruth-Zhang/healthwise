@@ -11,6 +11,7 @@ export default function login({navigation}) {
     if (!username)errors.username = "Username is required";
     if (!password) errors.password = "Password is required";
     setErrors(errors);
+    console.log ('errors', errors);
     return Object.keys(errors).length === 0;
   };
   const handleSubmit = () => {
@@ -18,6 +19,7 @@ export default function login({navigation}) {
       console.log("Submitted", username,password)
       setPassword("");
       setErrors({});
+      navigation.navigate ('tabnavigator')
     }
   };
   
@@ -28,12 +30,12 @@ export default function login({navigation}) {
         <View style={styles.form}>
           <Text style={styles.label}>sign in to your account</Text>
           <Text style={styles.label}>Username</Text>
-          <TextInput style={styles.input} placeholder="Enter your username" />
+          <TextInput style={styles.input} placeholder="Enter your username" value={username} onChangeText={setUsername}/>
           {errors.username ? <text style={styles.errorText}>{errors.username}</text> : null}
           <Text style={styles.label}>Password</Text>
           <TextInput style={styles.input} placeholder="Enter your password" secureTextEntry value={password} onChangeText={setPassword} />
           {errors.password ? <text style={styles.errorText}>{errors.password}</text> : null}
-          <Button style={styles.button} title="login" onPress={() => handleSubmit} />
+          <Button style={styles.button} title="login" onPress={() => handleSubmit()} />
           <StatusBar style="auto"/>
           <Button title ="Forgot password?" onPress={()=>navigation.navigate("Forgetpassword")}/>
         </View>
@@ -80,3 +82,4 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 });
+

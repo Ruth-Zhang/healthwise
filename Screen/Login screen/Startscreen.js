@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, Button, Pressable, SafeAreaView} from "react-native";
+import {View, Text, StyleSheet,Button, Pressable, SafeAreaView} from "react-native";
 
 export default function Startscreen ({navigation}) {
     return (
@@ -12,7 +12,7 @@ export default function Startscreen ({navigation}) {
             <Pressable onPress={() => navigation.navigate("register")} style={styles.button}>
                 <Text style={styles.press}>   Create your account</Text>
             </Pressable>
-            <Pressable onPress={() => navigation.navigate("maps")} style={styles.button}>
+            <Pressable onPress={() => navigation.navigate("tabnavigator")} style={styles.button}>
                 <Text style={styles.press}>   Try without account</Text>
             </Pressable>
             </View>

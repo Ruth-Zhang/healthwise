@@ -23,7 +23,7 @@ export default function Forgetpassword ({navigation}) {
         <SafeAreaView>
             <KeyboardAvoidingView
     behavior='padding'
-    keyboardVerticalOffset={Platform.OS === "ios" ? 100 :0} style={styles.container}>
+    keyboardVerticalOffset={100} style={styles.container}>
         <ScrollView showVerticalScrollIndiator={false}>
             <View style={styles.root}>
                 <Text style={styles.title}>reset your password</Text>

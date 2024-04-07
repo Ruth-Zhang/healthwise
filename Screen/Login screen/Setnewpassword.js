@@ -20,7 +20,7 @@ export default function Setnewpassword ({navigation}) {
                <TextInput style={styles.input} placeholder='enter your new password'
                value={newPassword} onChange={setNewPassword}/>
 
-               <Pressable onPress={onSubmitPressed} style={styles.press}>
+               <Pressable onPress={()=>navigation.navigate("login")} style={styles.press}>
                <Text style={styles.press}> Submit</Text>
                </Pressable>
                <Text> </Text>
