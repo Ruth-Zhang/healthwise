@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 const InfoPage = ({ data, searchTerm }) => {
     const diseaseInfo = data.find(disease => disease.heading === searchTerm);
 
@@ -12,7 +13,7 @@ const InfoPage = ({ data, searchTerm }) => {
     }
 
     return (
-        <View>
+        <SafeAreaView>
             <Text style={{ fontWeight: 'bold', fontSize: 20 }}>{diseaseInfo.heading}</Text>
             {diseaseInfo.sections.map((section, index) => (
                 <View key={index}>
@@ -20,7 +21,7 @@ const InfoPage = ({ data, searchTerm }) => {
                     <Text>{section.content}</Text>
                 </View>
             ))}
-        </View>
+        </SafeAreaView>
     );
 };
 

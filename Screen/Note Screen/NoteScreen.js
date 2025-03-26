@@ -1,4 +1,4 @@
-import { ScrollView, View, Button } from "react-native";
+import { ScrollView, View, Button, Text } from "react-native";
 import Note from "./Note";
 import { useEffect, useState } from "react";
 import { nanoid } from 'nanoid/non-secure'; 
@@ -6,34 +6,10 @@ import NotesList from "./NotesList";
 import { AntDesign } from '@expo/vector-icons';
 import {AsyncStorage} from 'react-native';
 import Search from "./Search";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function NoteScreen () {
-    const [notes, setNotes, deleteNotes] = useState([
-        {
-            id: nanoid(),
-            title: "Day 1",
-            text: "This is my first note",
-            date: "15/04/2023"
-        },
-        {
-            id: nanoid(),
-            title: "Day 2",
-            text: "This is my first note",
-            date: "19/04/2023"
-        },
-        {
-            id: nanoid(),
-            title: "Day 3",
-            text: "This is my first note",
-            date: "17/04/2023"
-        },
-        {
-            id: nanoid(),
-            title: "day 4",
-            text: "This is my first note",
-            date: "18/04/2023"
-        },
-    ]);
+    const [notes, setNotes, deleteNotes] = useState([]);
 
     useEffect (() =>{
         const save = async() => {
@@ -80,8 +56,14 @@ export default function NoteScreen () {
     }
 
     return (
-          <View style={{backgroundColor: '#fff', height: "100%"}}>
+          <SafeAreaView style={{backgroundColor: '#fff', height: "103%"}}>
             <Search handleSearchNote={setSearchText}/>
+            {!notes.length && !showNewNote ?(
+                <View>
+                    <Text style={{fontSize:23, fontWeight:'bold', marginTop:'40%', justifyContent:'center', marginHorizontal: 'auto', flexDirection: 'row', alignItems:'center'}}>You have no notes.</Text>
+                    <Text style={{fontSize:15, justifyContent:'center', marginHorizontal: 50, alignItems:'center', textAlign: 'center'}}>Tap the + button to write down new notes.</Text>
+                </View>
+            ) : null}
             <NotesList 
                 notes={notes.filter((note)=> (note.title??"").toLowerCase().includes((searchText??"").toLowerCase()))} 
                 handleAddNote={handleAddNote}
@@ -91,6 +73,6 @@ export default function NoteScreen () {
                 hideNewNote={() =>setShowNewNote(false)}
             />
             <AntDesign style={{backgroundColor:'#fff', marginLeft: 'auto', marginRight: '5%'}} onPress={() =>setShowNewNote(true)} name= "pluscircle" size={60} />
-          </View>
+          </SafeAreaView>
     );
 };

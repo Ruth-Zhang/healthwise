@@ -2,7 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, TextInput,KeyboardAvoidingView,Platform, Pressable} from 'react-native';
 import { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
- export default function register ({navigation}) {
+
+ export default function Register ({navigation}) {
   const [email, setEmail]=useState("");
   const [username, setUsername]=useState("");
   const [password, setPassword]=useState("");
@@ -29,13 +30,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
           <View style={styles.form}>
           <Text style={styles.label}>email address</Text>
           <TextInput style={styles.input} placeholder="Enter your email" value={email} onChangeText={setEmail}/>
-          {errors.email? <text style={styles.errorText}>{errors.email}</text> : null}
+          {errors.email? <Text style={styles.errorText}>{errors.email}</Text> : null}
           <Text style={styles.label}>username</Text>
           <TextInput style={styles.input} placeholder="set your username" value={username} onChangeText={setUsername}/>
-          {errors.username ? <text style={styles.errorText}>{errors.username}</text> : null}
+          {errors.username ? <Text style={styles.errorText}>{errors.username}</Text> : null}
           <Text style={styles.label}>password</Text>
           <TextInput style={styles.input} placeholder="set your password" value={password} onChangeText={setPassword}/>
-          {errors.password ? <text style={styles.errorText}>{errors.password}</text> : null}
+          {errors.password ? <Text style={styles.errorText}>{errors.password}</Text> : null}
           <Text style={styles.label}>birthday</Text>
           <TextInput style={styles.input} placeholder="dd/mm/yy"/>
           <View style={styles.press}>
@@ -83,17 +84,19 @@ import { SafeAreaView } from 'react-native-safe-area-context';
         borderRadius: 5,
       },
       button:{
-        width: 180,
+        width: 'auto',
         height: 35,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: 'lightblue',
-        fontSize: 18,
+        fontSize: 16,
+        textAlign: 'center',
+        borderRadius:4
     },
     press:{
       display: 'flex',
       width: '100%',
-justifyContent:'center',
-alignItems:'center',
+      justifyContent:'center',
+      alignItems:'center',
     }
 });

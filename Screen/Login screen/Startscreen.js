@@ -37,26 +37,31 @@ text: {
     marginBottom: 100,
     justifyContent:"center",
     alignItems:"center",
+    textAlign: 'center'
 },
 label: {
     fontSize: 50,
     marginBottom: 20
 },
 button:{
-    width: "50%",
+    width: "57%",
     height: 40,
     alignItems: 'center',
     backgroundColor: 'lightblue',
     fontSize: 20,
     justifyContent: 'center',
     marginBottom: 60,
+    textAlign: 'center',
+    alignItems: 'center',
+    borderRadius:5
 },
 press:{
     display: 'flex',
     width: "100%",
-justifyContent:'center',
-alignItems:'center',
-fontSize:18,
+    justifyContent:'center',
+    alignItems:'center',
+    fontSize:18,
+    textAlign: 'left',
   },
 
 });

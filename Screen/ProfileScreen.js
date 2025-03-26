@@ -42,7 +42,7 @@ export default function Example() {
           </TouchableOpacity>
 
           <View>
-            <Text style={styles.profileName}>Technowarriors</Text>
+            <Text style={styles.profileName}>Girls4Tech</Text>
 
             <Text style={styles.profileAddress}>
               123 Elf Road, North Pole 88888

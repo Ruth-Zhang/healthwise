@@ -9,31 +9,34 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@expo/webpack-config": "^19.0.0",
+    "@expo/webpack-config": "^19.0.1",
+    "@react-native-async-storage/async-storage": "^1.23.1",
+    "@react-native-community/datetimepicker": "8.2.0",
+    "@react-native-picker/picker": "^2.9.0",
     "@react-navigation/bottom-tabs": "^6.5.11",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
-    "@types/react": "~18.2.45",
+    "@types/react": "~18.3.12",
     "crypto": "npm:crypto-browserify",
     "crypto-browserify": "^3.12.0",
-    "expo": "^50.0.5",
-    "expo-location": "^16.5.5",
-    "expo-status-bar": "~1.11.1",
-    "expo-updates": "~0.24.9",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "expo": "~52.0.35",
+    "expo-location": "~18.0.4",
+    "expo-status-bar": "~2.0.0",
+    "expo-updates": "~0.26.10",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "react-icons": "^5.0.1",
-    "react-native": "0.73.2",
-    "react-native-maps": "1.10.0",
-    "react-native-safe-area-context": "4.8.2",
-    "react-native-screens": "~3.29.0",
+    "react-native": "0.76.5",
+    "react-native-maps": "1.18.0",
+    "react-native-safe-area-context": "4.12.0",
+    "react-native-screens": "~4.4.0",
     "react-native-vector-icons": "^10.0.3",
     "react-native-web": "~0.19.6",
     "stream": "npm:stream-browserify",
-    "typescript": "^5.3.0"
+    "typescript": "^5.3.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.25.2"
   },
   "browser": {
     "crypto": false

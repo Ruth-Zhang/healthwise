@@ -6,14 +6,10 @@ import ProfileScreen from "./Screen/ProfileScreen";
 import NoteScreen from "./Screen/Note Screen/NoteScreen";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import {AntDesign} from '@expo/vector-icons';
-import {Feather} from '@expo/vector-icons';
-import {MaterialIcons} from '@expo/vector-icons';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Startscreen from './Screen/Login screen/Startscreen';
-import login from './Screen/Login screen/login';
-import register from './Screen/Login screen/register';
-import map from './Screen/Map screen/map';
+import Login from './Screen/Login screen/login';
+import Register from './Screen/Login screen/register';
 import Forgetpassword from './Screen/Login screen/Forgetpassword';
 import Setnewpassword from './Screen/Login screen/Setnewpassword';
 import TabNavigator from './Screen/TabNavigator';
@@ -40,11 +36,11 @@ export default function App() {
     <NavigationContainer style={{backgroundColor: '#fff'}}>
         <Stack.Navigator initialRouteName='Startscreen'>
             <Stack.Screen name='Startscreen' component={Startscreen} />
-            <Stack.Screen name='login' component={login}/>
-            <Stack.Screen name='register' component={register}/>
+            <Stack.Screen name='login' component={Login}/>
+            <Stack.Screen name='register' component={Register}/>
             <Stack.Screen name='Forgetpassword' component={Forgetpassword}/>
             <Stack.Screen name='Setnewpassword' component={Setnewpassword}/>
-            <Stack.Screen name= 'tabnavigator'component={TabNavigator}/>
+            <Stack.Screen options={{ headerShown: false }} name= 'tabnavigator'component={TabNavigator}/>
         </Stack.Navigator>
     </NavigationContainer>
   );

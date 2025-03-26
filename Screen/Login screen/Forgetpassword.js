@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Forgetpassword ({navigation}) {
     const [email, setEmail] =useState ('');
-    // onst [errors, setErrors]= useState({});
+    // const [errors, setErrors]= useState({});
     // const validateForm = () => {
     //     let errors ={};
     //     if (!email)errors.email = "Email is required";
@@ -69,19 +69,22 @@ const styles= StyleSheet.create({
         borderRadius: 5,
       },
       button:{
-        width: 150,
-        height: 30,
+        width: 180,
+        height: 40,
         alignItems: 'center',
         backgroundColor: 'lightblue',
-        fontSize: 20,
+        fontSize: 18,
         marginBottom:30,
+        textAlign: 'auto',
+        borderRadius:4
     },
     press:{
         width: 80,
-        height: 25,
+        height: 35,
         alignItems:'center',
-        fontSize: 20,
+        fontSize: 18,
         backgroundColor: 'lightblue',
+        textAlign: 'auto'
     },
     errorText: {
         color: "red",

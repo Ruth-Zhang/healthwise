@@ -5,6 +5,9 @@ import { SearchBar } from './SearchBar';
 import { SearchResultsList } from './SearchResultsList';
 import { data } from "./data"
 import { DiseaseInfoPage } from "./DiseaseInfoPage";
+import { TouchableWithoutFeedback } from "react-native";
+import { Keyboard } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function SearchScreen() {
   const [results, setResults] = useState(data);
@@ -19,25 +22,27 @@ export default function SearchScreen() {
   } else {
 
     return (
-      <View style={styles.app} className="App">
-        <View style={styles.searchBarContainer} className="search-bar-container">
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+        <SafeAreaView style={styles.app} className="App">
+         <View style={styles.searchBarContainer} className="search-bar-container">
           <SearchBar setResults={filterResults} />
           <SearchResultsList results={results} onSelect={setDisease} />
-        </View>
-      </View>
+         </View>
+        </SafeAreaView>
+      </TouchableWithoutFeedback>
     );
   }
 }
 const styles = {
   app: {
-    backgroundColor: "#eee",
-    height: "100vh",
-    width: "100vw",
+    backgroundColor: "#fff",
+    height: "100%",
+    width: "100%",
   }
   ,
   searchBarContainer: {
     paddingTop: "30vh",
-    width: "40%",
+    width: "100%",
     margin: "auto",
     display: "flex",
     flexDirection: "column",

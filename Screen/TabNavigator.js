@@ -8,7 +8,9 @@ import {AntDesign} from '@expo/vector-icons';
 import {Feather} from '@expo/vector-icons';
 import {MaterialIcons} from '@expo/vector-icons';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import map from './Map screen/map';
+import Entypo from '@expo/vector-icons/Entypo';
+import Map from './Map screen/map';
+import ReminderScreen from "./Reminder screen/ReminderScreen";
 
 const Stack=createNativeStackNavigator ();
 
@@ -31,6 +33,7 @@ export default function TabNavigator({navigation}) {
   return (
         <Tab.Navigator>
             <Tab.Screen name="Search" component={SearchScreen} options={{
+              headerShown: false,
               tabBarIcon: ({focused})=>{
                 return (
                  <View style={{alignItems: "center", justifyContent: "center"}}>
@@ -40,7 +43,7 @@ export default function TabNavigator({navigation}) {
               }
             }}
             />
-            <Tab.Screen name="Map" component={map} options={{
+            <Tab.Screen name="Map" component={Map} options={{headerShown: false,
               tabBarIcon: ({focused})=>{
                 return (
                  <View style={{alignItems: "center", justifyContent: "center"}}>
@@ -50,17 +53,27 @@ export default function TabNavigator({navigation}) {
               }
             }}
            />
-           <Tab.Screen name="Notes" component={NoteScreen} options={{
+           <Tab.Screen name="Notes" component={NoteScreen} options={{ headerShown: false,
               tabBarIcon: ({focused})=>{
                 return (
                  <View style={{alignItems: "center", justifyContent: "center"}}>
-                 <MaterialIcons name="edit-note" size={24} color={focused ? "#16247d": "#111"} />
+                 <MaterialIcons name="edit-note" size={27} color={focused ? "#16247d": "#111"} />
              </View>
                 )
               }
             }}
             />
-            <Tab.Screen name="Profile" component={ProfileScreen} options={{
+            <Tab.Screen name="Reminder" component={ReminderScreen} options={{headerShown: false,
+              tabBarIcon: ({focused})=>{
+                return (
+                 <View style={{alignItems: "center", justifyContent: "center"}}>
+                 <Entypo name="bell" size={23} color="black" />
+             </View>
+                )
+              }
+            }}
+            />
+            <Tab.Screen name="Profile" component={ProfileScreen} options={{headerShown: false,
               tabBarIcon: ({focused})=>{
                 return (
                  <View style={{alignItems: "center", justifyContent: "center"}}>

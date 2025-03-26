@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, TextInput,KeyboardAvoidingView,Platform,Pressable } from 'react-native';
 import { useState } from 'react';
 
-export default function login({navigation}) {
+export default function Login({navigation}) {
   const [username, setUsername]=useState("");
   const [password, setPassword]=useState("");
   const [errors, setErrors]= useState({});
@@ -31,10 +31,10 @@ export default function login({navigation}) {
           <Text style={styles.label}>sign in to your account</Text>
           <Text style={styles.label}>Username</Text>
           <TextInput style={styles.input} placeholder="Enter your username" value={username} onChangeText={setUsername}/>
-          {errors.username ? <text style={styles.errorText}>{errors.username}</text> : null}
+          {errors.username ? <Text style={styles.errorText}>{errors.username}</Text> : null}
           <Text style={styles.label}>Password</Text>
           <TextInput style={styles.input} placeholder="Enter your password" secureTextEntry value={password} onChangeText={setPassword} />
-          {errors.password ? <text style={styles.errorText}>{errors.password}</text> : null}
+          {errors.password ? <Text style={styles.errorText}>{errors.password}</Text> : null}
           <Button style={styles.button} title="login" onPress={() => handleSubmit()} />
           <StatusBar style="auto"/>
           <Button title ="Forgot password?" onPress={()=>navigation.navigate("Forgetpassword")}/>

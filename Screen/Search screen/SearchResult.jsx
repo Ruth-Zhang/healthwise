@@ -1,19 +1,33 @@
 import React from "react";
+import { Text, View } from "react-native";
 
 export const SearchResult = ({result,onSelect}) => {
     return (
-    <div style={styles.searchResults}
+    <View style={styles.container}>
+    <Text style={styles.searchResults}
       className="search-result"
-        onClick={(e) => onSelect(result)}
+        onPress={(e) => onSelect(result)}
         >
         {result.heading}
-    </div>
+    </Text>
+    </View>
     );
 };
 
 const styles={
     searchResults:{
-        fontFamily: "Arial"
-
+        fontFamily: "Arial",
+        fontSize: 23,
+        backgroundColor: "rgb(193, 238, 245)",
+        marginBottom: 10,
+        padding: 10,
+        borderRadius: 10,
+        overflow: 'hidden',
+        minHeight: 200
+    },
+    container:{
+        width:'49%',
+        
+        
     }
 }

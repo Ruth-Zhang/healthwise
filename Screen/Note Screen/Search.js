@@ -6,7 +6,7 @@ const Search = ({ handleSearchNote}) => {
     return (
         <View style={styles.container}>
             <AntDesign name= "search1" size={20}/>
-            <TextInput onChangeText={(text)=>handleSearchNote(text)} style={styles.search}type="text" placeholder="Type to search..." ></TextInput>
+            <TextInput onChangeText={(text)=>handleSearchNote(text)} style={styles.search}type="text" placeholder=" Type to search..." ></TextInput>
         </View>
     );
 };
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
 	    alignItems: 'center',
 	    backgroundColor: '#edededfc',
-	    borderRadius: '10px',
+	    borderRadius: 50,
 	    padding: 10,
 	    marginBottom: 15,
         marginTop: '5%',

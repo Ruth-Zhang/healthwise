@@ -1,4 +1,4 @@
-import {SafeAreaView,TouchableOpacity,StyleSheet,View,Container,Row, Col} from "react-native";
+import {TouchableOpacity,StyleSheet,View,Container,Row, Col} from "react-native";
 import { MdArrowBack } from "react-icons/md";
 
   
