@@ -6,9 +6,6 @@ export default function EmptyState({ onNavigate }) {
     
     return (
         <View style={{marginTop: 80, display:'flex', alignItems:'center'}}>
-            <Image source={require('../../assets/medicine.png')}
-             style={{width: 120, height:120, marginHorizontal: 'auto'}}
-            />
             <Text style={{fontSize:23, fontWeight:'bold', marginTop:20, alignItems:'center'}}>
                 No Medications!
             </Text>

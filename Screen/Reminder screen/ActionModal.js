@@ -2,8 +2,32 @@ import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import React from "react";
 import MedicationCards from "./MedicationCards";
 import { AntDesign, Feather,} from '@expo/vector-icons';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function ActionModal({ item, onGoBack, selectedDate}) {
+    const updateMedicationStatus = async (status) => {
+        try {
+
+            const storedData = await AsyncStorage.getItem("medicationData");
+            let medications = storedData ? JSON.parse(storedData) : [];
+
+            medications = medications.map((med) => {
+                if (med.name === item.name) {  
+                    return { ...med, status: { ...med.status, [selectedDate]: status } };
+                }
+                return med;
+            });
+
+            await AsyncStorage.setItem("medicationData", JSON.stringify(medications));
+            console.log(`Medication "${item.name}" marked as ${status} on ${selectedDate}`);
+
+            onGoBack();
+
+        } catch (error) {
+            console.error("Error updating medication status:", error);
+        }
+    };
+
     return (
         <View>
             <TouchableOpacity style={{marginTop:20}} onPress={onGoBack}> 
@@ -23,12 +47,12 @@ export default function ActionModal({ item, onGoBack, selectedDate}) {
 
             </View>
             <View style={{flexDirection:'row', gap:10, marginTop:25, alignSelf:'center'}}>
-                <TouchableOpacity style={styles.missButton}>
+                <TouchableOpacity style={styles.missButton} onPress={() => updateMedicationStatus("Missed")}>
                     <AntDesign style={{color: 'red', alignItems:'center'}} name= "close" size={20} />
                     <Text style={{textAlign:'center', color:'red', fontSize:15}}>Missed</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.succButton}>
+                <TouchableOpacity style={styles.succButton}onPress={() => updateMedicationStatus("Taken")}>
                     <Feather style={{color: 'white', alignItems:'center'}} name= "check" size={20} />
                     <Text style={{textAlign:'center', color:'white', fontSize:15}}>Taken</Text>
                 </TouchableOpacity>

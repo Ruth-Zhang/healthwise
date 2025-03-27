@@ -1,14 +1,15 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import {Ionicons} from '@expo/vector-icons';
+import {Ionicons, Feather, AntDesign} from '@expo/vector-icons';
 
-export default function MedicationCards ({medicine}) {
+export default function MedicationCards ({medicine, selectedDate}) {
+
     return(
         <View style={styles.container}>
             <View style={styles.subContainer}>
                 <Text style={{fontSize: 20, fontWeight: 'bold'}}>{medicine?.name}</Text>
-                <Text style={{fontsize: 17}}>{medicine?.when}</Text>
+                <Text style={{fontSize: 17}}>{medicine?.when}</Text>
                 <Text>{medicine?.dose} {medicine?.type.name}</Text>
 
             </View>
@@ -16,6 +17,7 @@ export default function MedicationCards ({medicine}) {
                 <Ionicons style={styles.icon} name="timer-outline" size={24} color="black" />
                 <Text style={{fontWeight:'bold'}}>{medicine?.reminder}</Text>
             </View>
+
         </View>
     )
 }
@@ -31,7 +33,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: 'auto',
-        alignItems: 'center'
+        alignItems: 'center',
+        position:'relative'
     },
     subContainer:{
         flexDirection: 'flex',
@@ -41,5 +44,10 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: 'white',
         alignItems: 'center'
+    },
+    statusIcon: {
+        position: "absolute",
+        top: 5,   
+        right: 5, 
     }
 })

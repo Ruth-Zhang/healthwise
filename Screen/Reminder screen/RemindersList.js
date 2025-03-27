@@ -5,7 +5,7 @@ import MedicationCards from "./MedicationCards";
 import { useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import EmptyState from "./EmptyState";
-import {FontAwesome6} from '@expo/vector-icons'
+import {AntDesign} from '@expo/vector-icons'
 
 export default function RemindersList({ onGoBack, onSelectItem }) {
     const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split("T")[0]);
@@ -54,10 +54,7 @@ export default function RemindersList({ onGoBack, onSelectItem }) {
     }, [selectedDate, storedMedications]);
 
     return (
-        <View style={{ marginTop: 20, backgroundColor: "white", height: "100%" }}>
-            <TouchableOpacity onPress={onGoBack} style={{ marginLeft: 'auto', marginRight: '0%', marginTop: 10 }}>
-                <FontAwesome6 style={{color: 'black'}} name= "notes-medical" size={40} />
-            </TouchableOpacity>
+        <View style={{ marginTop: 20, backgroundColor: "white", flex:1 }}>
 
             <Image source={require('../../assets/medication.jpg')}
                 style={{width: 380, height:200, alignSelf: 'center',}}
@@ -81,12 +78,17 @@ export default function RemindersList({ onGoBack, onSelectItem }) {
                 data={filteredMedications}
                 style={{marginTop: 10}}
                 keyExtractor={(item, index) => index.toString()}
-                renderItem={({ item }) => (
+                renderItem={({ item }) => { 
+                    return (
                     <TouchableOpacity onPress={() => onSelectItem(item, selectedDate)}>
                         <MedicationCards medicine={item}/>
                     </TouchableOpacity>
-                )}
+                )}}
             />:<EmptyState onNavigate={onGoBack} />}
+
+            <TouchableOpacity onPress={onGoBack} style={{ bottom: '0%',right: "0%", position:'absolute' }}>
+                <AntDesign style={{backgroundColor:'#fff',}} name= "pluscircle" size={60} />
+            </TouchableOpacity>
         </View>
     );
 }

@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import AddMedicineScreen from "./AddMedicineScreen";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import RemindersList from "./RemindersList";
-import ActionModal from "./ActionModal"
+import ActionModal from "./ActionModal";
 
 export default function ReminderScreen() {
     const [currentScreen, setCurrentScreen] = useState('');
