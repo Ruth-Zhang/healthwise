@@ -20,13 +20,10 @@ export default function Setnewpassword ({navigation}) {
                <TextInput style={styles.input} placeholder='enter your new password'
                value={newPassword} onChange={setNewPassword}/>
 
-               <Pressable onPress={()=>navigation.navigate("login")} style={styles.press}>
-               <Text style={styles.press}> Submit</Text>
+               <Pressable onPress={onSubmitPressed} style={styles.press}>
+               <Text style={styles.press}>  Submit</Text>
                </Pressable>
-               <Text> </Text>
-               <Pressable onPress={()=>navigation.navigate("login")} style={styles.button}>
-               <Text style={styles.button}>  Back to log in </Text>
-               </Pressable>
+               
 
             </View>
         </ScrollView>
@@ -66,10 +63,16 @@ const styles= StyleSheet.create({
         flex:1,
     },
     press:{
-        width: 80,
-        height: 25,
+        width: 82,
+        height: 28,
         alignItems:'center',
         fontSize: 20,
-        backgroundColor: 'lightblue'
+        backgroundColor: 'lightblue',
+        borderRadius:30,
+        borderColor:"black",
+        shadowColor: "#000",
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
     },
 })

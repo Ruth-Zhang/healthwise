@@ -2,10 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, TextInput,KeyboardAvoidingView,Platform, Pressable} from 'react-native';
 import { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
- export default function Register ({navigation}) {
+ export default function register () {
   const [email, setEmail]=useState("");
-  const [username, setUsername]=useState("");
   const [password, setPassword]=useState("");
   const [errors, setErrors]= useState({});
   const validateForm = () => {
@@ -22,26 +20,26 @@ import { SafeAreaView } from 'react-native-safe-area-context';
       setPassword("");
       setEmail("");
       setErrors({});
-      navigation.navigate ('tabnavigator')
     }
   };
     return(
-        <SafeAreaView>
-          <View style={styles.form}>
-          <Text style={styles.label}>email address</Text>
-          <TextInput style={styles.input} placeholder="Enter your email" value={email} onChangeText={setEmail}/>
-          {errors.email? <Text style={styles.errorText}>{errors.email}</Text> : null}
-          <Text style={styles.label}>username</Text>
-          <TextInput style={styles.input} placeholder="set your username" value={username} onChangeText={setUsername}/>
-          {errors.username ? <Text style={styles.errorText}>{errors.username}</Text> : null}
-          <Text style={styles.label}>password</Text>
-          <TextInput style={styles.input} placeholder="set your password" value={password} onChangeText={setPassword}/>
-          {errors.password ? <Text style={styles.errorText}>{errors.password}</Text> : null}
-          <Text style={styles.label}>birthday</Text>
-          <TextInput style={styles.input} placeholder="dd/mm/yy"/>
+        <SafeAreaView styles={{backgroundColor:'white'}}>
+            <View style={styles.form}>
+              <Text style={{fontWeight:"bold", fontSize: 25,justifyContent: "center",marginTop:-50,marginBottom:20}}>Let's set up your account</Text>
+          <Text style={styles.label}>Email address</Text>
+          <TextInput style={styles.input} placeholder="Enter your email" />
+          {errors.email? <text style={styles.errorText}>{errors.email}</text> : null}
+          <Text style={styles.label}>Username</Text>
+          <TextInput style={styles.input} placeholder="set your username" />
+          {errors.username ? <text style={styles.errorText}>{errors.username}</text> : null}
+          <Text style={styles.label}>Password</Text>
+          <TextInput style={styles.input} placeholder="set your password" />
+          {errors.password ? <text style={styles.errorText}>{errors.password}</text> : null}
+          <Text style={styles.label}>Birthday</Text>
+          <TextInput style={styles.input} placeholder="dd/mm/yy" />
           <View style={styles.press}>
-          <Pressable onPress={() => handleSubmit ()} style={styles.button}>
-            <Text style={styles.button}>  Create your account</Text>
+          <Pressable onPress={() => handleSubmit} style={styles.button}>
+            <Text style={[styles.button,{padding:8}]}>Create your account</Text>
           </Pressable>
           </View>
           </View>
@@ -52,19 +50,19 @@ import { SafeAreaView } from 'react-native-safe-area-context';
  const styles = StyleSheet.create({
     container: {
       flex:1,
-      backgroundColor: '#fff',
+      backgroundColor: 'white',
       alignItems: 'center',
       justifyContent: 'center',
       paddingHorizontal: 20,
     },
     form:{
       backgroundColor: "White",
-      padding: 20,
+      padding: 30,
       borderRadius: 10,
       ShadowColor:"black",
       shadowOffset: {
         width:0,
-        height:2
+        height:2,
       },
       shadowOpacity: 0.25,
       shadowRadius: 4,
@@ -79,24 +77,29 @@ import { SafeAreaView } from 'react-native-safe-area-context';
         height: 40,
         borderColor: "#ddd",
         borderWidth: 1,
-        marginBottom: 15,
+        marginBottom: 20,
         padding: 10,
         borderRadius: 5,
       },
       button:{
         width: 'auto',
-        height: 35,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: 'lightblue',
-        fontSize: 16,
-        textAlign: 'center',
-        borderRadius:4
+        textAlign:'center',
+        fontSize: 19,
+        borderRadius: 10,
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
     },
     press:{
       display: 'flex',
-      width: '100%',
+      width: 'auto',
       justifyContent:'center',
       alignItems:'center',
+      textAlign:'center',
+      borderRadius: 10,
+      marginTop:'5%'
     }
 });

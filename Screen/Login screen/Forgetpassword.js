@@ -1,36 +1,36 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, ScrollView, TextInput, KeyboardAvoidingView, Pressable} from 'react-native';
+import {View, Text, StyleSheet, ScrollView, TextInput, KeyboardAvoidingView, Pressable, Platform} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Forgetpassword ({navigation}) {
     const [email, setEmail] =useState ('');
-    // const [errors, setErrors]= useState({});
-    // const validateForm = () => {
-    //     let errors ={};
-    //     if (!email)errors.email = "Email is required";
-    //     setErrors(errors);
-    //     return Object.keys(errors).length === 0;
-    //   };
-    //   const onPress = () => {
-    //     if(validateForm()) {
-    //       console.log("Submitted", email)
-    //       setEmail("");
-    //       setErrors({});
-    //     }
-    //   };c
+     const [errors, setErrors]= useState({});
+    const validateForm = () => {
+        let errors ={};
+        if (!email)errors.email = "Email is required";
+        setErrors(errors);
+        return Object.keys(errors).length === 0;
+       };
+      const onPress = () => {
+         if(validateForm()) {
+          console.log("Submitted", email)
+          setEmail("");
+          setErrors({});
+         }
+       };
 
     return (
         <SafeAreaView>
             <KeyboardAvoidingView
     behavior='padding'
-    keyboardVerticalOffset={100} style={styles.container}>
+    keyboardVerticalOffset={Platform.OS === "ios" ? 100 :0} style={styles.container}>
         <ScrollView showVerticalScrollIndiator={false}>
             <View style={styles.root}>
                 <Text style={styles.title}>reset your password</Text>
 
                <TextInput style={styles.input} placeholder='Email'
                value={email} onChange={setEmail}/>
-               {/* {errors.email? <text style={styles.errorText}>{errors.email}</text> : null} */}
+               {/*{errors.email?<text style={styles.errorText}>{errors.email}</text> : null}*/}
                <Pressable onPress={() => navigation.navigate("Setnewpassword")} style={styles.button}>
                <Text style={styles.press}>   Send</Text>
                </Pressable>
@@ -69,22 +69,24 @@ const styles= StyleSheet.create({
         borderRadius: 5,
       },
       button:{
-        width: 180,
-        height: 40,
+        width: 150,
+        height: 30,
         alignItems: 'center',
         backgroundColor: 'lightblue',
-        fontSize: 18,
+        fontSize: 20,
         marginBottom:30,
-        textAlign: 'auto',
-        borderRadius:4
+        borderRadius:30,
+        shadowColor: "#000",
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
     },
     press:{
         width: 80,
-        height: 35,
+        height: 25,
         alignItems:'center',
-        fontSize: 18,
+        fontSize: 20,
         backgroundColor: 'lightblue',
-        textAlign: 'auto'
     },
     errorText: {
         color: "red",
