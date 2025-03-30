@@ -1,213 +1,357 @@
 import React, { useState } from "react";
-import {StyleSheet,SafeAreaView,View,ScrollView,Text,TouchableOpacity,Switch,Image,} from "react-native";
+import { StyleSheet, SafeAreaView, View, ScrollView, Text, TouchableOpacity, Switch, Image } from "react-native";
 import FeatherIcon from "react-native-vector-icons/Feather";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import SuggestChange from "./Suggestchange";
-import { MaterialIcons, FontAwesome6, Ionicons,  } from '@expo/vector-icons'
 
-export default function Example() {
+export default function ProfileScreen() {
   const [form, setForm] = useState({
     darkMode: false,
     emailNotifications: true,
     pushNotifications: false,
   });
+
   const [page, setPage] = useState("main");
+  const [language, setLanguage] = useState("english");
+
+  // Translations
+  const text = {
+    preferences: { english: "Preferences", french: "Préférences" },
+    language: { english: "Language", french: "Langue" },
+    darkMode: { english: "Dark Mode", french: "Mode Sombre" },
+    location: { english: "Location", french: "Localisation" },
+    emailNotifications: {
+      english: "Email Notifications",
+      french: "Notifications par e-mail",
+    },
+    pushNotifications: {
+      english: "Push Notifications",
+      french: "Notifications Push",
+    },
+    resources: { english: "Resources", french: "Ressources" },
+    suggestChange: {
+      english: "Suggest a Change",
+      french: "Suggérer un changement",
+    },
+    contactUs: { english: "Contact Us", french: "Nous contacter" },
+    rateApp: {
+      english: "Rate in App Store",
+      french: "Évaluer dans l'App Store",
+    },
+  };
+
+  const getText = (key) => (text[key] ? text[key][language] : key); 
+
+  const toggleDarkMode = () => {
+    setForm({ ...form, darkMode: !form.darkMode });
+  };
+
   const mainpage = (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
+    <SafeAreaView style={[
+      styles.container,
+      { backgroundColor: form.darkMode ? "#333" : "#fff" },
+    ]}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.container}>
         <View style={styles.profile}>
-          <TouchableOpacity
-            onPress={() => {
-              // handle onPress
-            }}
-          >
-            <View style={styles.profileAvatarWrapper}>
+          {/* Profile Section */}
+          <View style={styles.profileAvatarWrapper}>
               <Image
-                alt=""
                 source={{
                   uri: "https://poolq.blob.core.windows.net/delta/images/637817697032391318-Screen%20Shot%202022-03-01%20at%202.12.55%20PM.png",
                 }}
                 style={styles.profileAvatar}
               />
-
-              <TouchableOpacity
-                onPress={() => {
-                  // handle onPress
-                }}
-              >
+              <TouchableOpacity>
                 <View style={styles.profileAction}>
                   <FeatherIcon color="#fff" name="edit-3" size={15} />
                 </View>
               </TouchableOpacity>
-            </View>
-          </TouchableOpacity>
-
-          <View>
-            <Text style={styles.profileName}>Girls4Tech</Text>
-
-            <Text style={styles.profileAddress}>
+          </View>
+          <Text
+              style={[
+                styles.profileName,
+                { color: form.darkMode ? "#fff" : "#414d63" },
+              ]}
+            >
+              Technowarriors
+            </Text>
+            <Text
+              style={[
+                styles.profileAddress,
+                { color: form.darkMode ? "#ccc" : "#989898" },
+              ]}
+            >
               123 Elf Road, North Pole 88888
             </Text>
           </View>
         </View>
-
-        <ScrollView>
+        {/* Setting Section */}
+        
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Preferences</Text>
+          <Text
+              style={[
+                styles.sectionTitle,
+                { color: form.darkMode ? "#ccc" : "#9e9e9e" },
+              ]}
+            >
+              {getText("preferences")}
+            </Text>
 
+            {/* Language Row */}
             <TouchableOpacity
-              onPress={() => {
-                // handle onPress
-              }}
-              style={styles.row}
+              onPress={() =>
+                setLanguage(language === "english" ? "french" : "english")
+              }
+              style={[
+                styles.row,
+                { backgroundColor: form.darkMode ? "#555" : "#f2f2f2" },
+              ]}
             >
               <View style={[styles.rowIcon, { backgroundColor: "#fe9400" }]}>
-                <Ionicons color="#fff" name="text" size={20} />
+                <MaterialIcons name="language" color="#fff" size={20} />
               </View>
 
-              <Text style={styles.rowLabel}>Language</Text>
+              <Text
+                style={[
+                  styles.rowLabel,
+                  { color: form.darkMode ? "#fff" : "#0c0c0c" },
+                ]}
+              >
+                {getText("language")}
+              </Text>
 
-              <View style={styles.rowSpacer} />
-
-              <FeatherIcon color="#C6C6C6" name="chevron-right" size={20} />
+              <FeatherIcon
+                color={form.darkMode ? "#fff" : "#C6C6C6"}
+                name="chevron-right"
+                size={20}
+              />
             </TouchableOpacity>
 
-            <View style={styles.row}>
+            {/* Dark Mode Row */}
+            <View
+              style={[
+                styles.row,
+                { backgroundColor: form.darkMode ? "#555" : "#f2f2f2" },
+              ]}>
               <View style={[styles.rowIcon, { backgroundColor: "#007afe" }]}>
-                <FontAwesome6 color="#fff" name="eye" size={20} />
+                <FeatherIcon name="moon" color="#fff" size={20} />
               </View>
 
-              <Text style={styles.rowLabel}>Dark Mode</Text>
-
-              <View style={styles.rowSpacer} />
+              <Text
+                style={[
+                  styles.rowLabel,
+                  { color: form.darkMode ? "#fff" : "#0c0c0c" },
+                ]}
+              >
+                Dark Mode
+              </Text>
 
               <Switch
-                onValueChange={(darkMode) => setForm({ ...form, darkMode })}
+                onValueChange={toggleDarkMode}
                 value={form.darkMode}
+                trackColor={{ false: "#767577", true: "#81b0ff" }}
+                thumbColor={form.darkMode ? "#fff" : "#f4f3f4"}
+                style={styles.switchStyle}
               />
             </View>
 
+            {/* Location Row */}
             <TouchableOpacity
-              onPress={() => {
-                // handle onPress
-              }}
-              style={styles.row}
+              onPress={() => {}}
+              style={[
+                styles.row,
+                { backgroundColor: form.darkMode ? "#555" : "#f2f2f2" },
+              ]}
             >
               <View style={[styles.rowIcon, { backgroundColor: "#32c759" }]}>
-                <FontAwesome6 color="#fff" name="location-pin-lock" size={20} />
+                <FontAwesome5 name="map-marker-alt" color="#fff" size={20} />
               </View>
 
-              <Text style={styles.rowLabel}>Location</Text>
+              <Text
+                style={[
+                  styles.rowLabel,
+                  { color: form.darkMode ? "#fff" : "#0c0c0c" },
+                ]}
+              >
+                {getText("location")}
+              </Text>
 
-              <View style={styles.rowSpacer} />
-
-              <FeatherIcon color="#C6C6C6" name="chevron-right" size={20} />
+              <FeatherIcon
+                color={form.darkMode ? "#fff" : "#C6C6C6"}
+                name="chevron-right"
+                size={20}
+              />
             </TouchableOpacity>
 
-            <View style={styles.row}>
+            {/* Email Notifications Row */}
+            <View
+              style={[
+                styles.row,
+                { backgroundColor: form.darkMode ? "#555" : "#f2f2f2" },
+              ]}
+            >
               <View style={[styles.rowIcon, { backgroundColor: "#38C959" }]}>
-                <MaterialIcons color="#fff" name="mark-email-unread" size={20} />
+                <MaterialIcons name="email" color="#fff" size={20} />
               </View>
 
-              <Text style={styles.rowLabel}>Email Notifications</Text>
-
-              <View style={styles.rowSpacer} />
+              <Text
+                style={[
+                  styles.rowLabel,
+                  { color: form.darkMode ? "#fff" : "#0c0c0c" },
+                ]}
+              >
+                {getText("emailNotifications")}
+              </Text>
 
               <Switch
                 onValueChange={(emailNotifications) =>
                   setForm({ ...form, emailNotifications })
                 }
                 value={form.emailNotifications}
+                style={styles.switchStyle}
               />
             </View>
 
-            <View style={styles.row}>
+            {/* Push Notifications Row */}
+            <View
+              style={[
+                styles.row,
+                { backgroundColor: form.darkMode ? "#555" : "#f2f2f2" },
+              ]}
+            >
               <View style={[styles.rowIcon, { backgroundColor: "#38C959" }]}>
-                <Ionicons color="#fff" name="notifications" size={20} />
+                <FeatherIcon name="bell" color="#fff" size={20} />
               </View>
 
-              <Text style={styles.rowLabel}>Push Notifications</Text>
-
-              <View style={styles.rowSpacer} />
+              <Text
+                style={[
+                  styles.rowLabel,
+                  { color: form.darkMode ? "#fff" : "#0c0c0c" },
+                ]}
+              >
+                {getText("pushNotifications")}
+              </Text>
 
               <Switch
                 onValueChange={(pushNotifications) =>
                   setForm({ ...form, pushNotifications })
                 }
                 value={form.pushNotifications}
+                style={styles.switchStyle}
               />
             </View>
           </View>
 
+          {/* Resources Section */}
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Resources</Text>
+            <Text
+              style={[
+                styles.sectionTitle,
+                { color: form.darkMode ? "#ccc" : "#9e9e9e" },
+              ]}
+            >
+              {getText("resources")}
+            </Text>
 
             <TouchableOpacity
-              onPress={() => {
-                setPage("suggestchange");
-              }}
-              style={styles.row}
+              onPress={() => setPage("suggestchange")}
+              style={[
+                styles.row,
+                { backgroundColor: form.darkMode ? "#555" : "#f2f2f2" },
+              ]}
             >
               <View style={[styles.rowIcon, { backgroundColor: "#8e8d91" }]}>
-                <Ionicons color="#fff" name="search" size={20} />
+                <MaterialCommunityIcons name="file-search" size={20} color="#fff" />
               </View>
 
-              <Text style={styles.rowLabel}>Suggest a change</Text>
+              <Text
+                style={[
+                  styles.rowLabel,
+                  { color: form.darkMode ? "#fff" : "#0c0c0c" },
+                ]}
+              >
+                {getText("suggestChange")}
+              </Text>
 
-              <View style={styles.rowSpacer} />
-
-              <FeatherIcon color="#C6C6C6" name="chevron-right" size={20} />
+              <FeatherIcon
+                color={form.darkMode ? "#fff" : "#C6C6C6"}
+                name="chevron-right"
+                size={20}
+              />
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => {
-                // handle onPress
-              }}
-              style={styles.row}
+              onPress={() => {}}
+              style={[
+                styles.row,
+                { backgroundColor: form.darkMode ? "#555" : "#f2f2f2" },
+              ]}
             >
               <View style={[styles.rowIcon, { backgroundColor: "#007afe" }]}>
-                <FontAwesome6 color="#fff" name="comment-dots" size={20} />
+                <FontAwesome5 name="comment-dots" size={20} color="#fff" />
               </View>
 
-              <Text style={styles.rowLabel}>Contact Us</Text>
+              <Text
+                style={[
+                  styles.rowLabel,
+                  { color: form.darkMode ? "#fff" : "#0c0c0c" },
+                ]}
+              >
+                {getText("contactUs")}
+              </Text>
 
-              <View style={styles.rowSpacer} />
-
-              <FeatherIcon color="#C6C6C6" name="chevron-right" size={20} />
+              <FeatherIcon
+                color={form.darkMode ? "#fff" : "#C6C6C6"}
+                name="chevron-right"
+                size={20}
+              />
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => {
-                // handle onPress
-              }}
-              style={styles.row}
+              onPress={() => {}}
+              style={[
+                styles.row,
+                { backgroundColor: form.darkMode ? "#555" : "#f2f2f2" },
+              ]}
             >
               <View style={[styles.rowIcon, { backgroundColor: "#32c759" }]}>
                 <MaterialIcons color="#fff" name="rate-review" size={20} />
               </View>
 
-              <Text style={styles.rowLabel}>Rate in App Store</Text>
+              <Text
+                style={[
+                  styles.rowLabel,
+                  { color: form.darkMode ? "#fff" : "#0c0c0c" },
+                ]}
+              >
+                {getText("rateApp")}
+              </Text>
 
-              <View style={styles.rowSpacer} />
-
-              <FeatherIcon color="#C6C6C6" name="chevron-right" size={20} />
+              <FeatherIcon
+                color={form.darkMode ? "#fff" : "#C6C6C6"}
+                name="chevron-right"
+                size={20}
+              />
             </TouchableOpacity>
           </View>
         </ScrollView>
-      </View>
     </SafeAreaView>
   );
-  if (page == "main") {
+
+  if (page === "main") {
     return mainpage;
-  } else if (page == "suggestchange") {
+  } else if (page === "suggestchange") {
     return <SuggestChange onBackPress={() => setPage("main")} />;
   }
 }
+
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     padding: 0,
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
   },
   /** Profile */
   profile: {
@@ -257,15 +401,15 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     fontSize: 12,
     fontWeight: "600",
-    color: "#9e9e9e",
     textTransform: "uppercase",
     letterSpacing: 1.1,
+    marginBottom: 12,
   },
   /** Row */
   row: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyContent: "space-between", // Buttons are now on the right
     height: 50,
     backgroundColor: "#f2f2f2",
     borderRadius: 8,
@@ -285,11 +429,12 @@ const styles = StyleSheet.create({
   rowLabel: {
     fontSize: 17,
     fontWeight: "400",
-    color: "#0c0c0c",
+    flex: 1, // Makes the text align left
   },
-  rowSpacer: {
+  switchStyle: {
+    transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }],
+  },
+  scrollContainer: {
     flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
   },
 });
