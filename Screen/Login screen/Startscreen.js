@@ -6,7 +6,7 @@ export default function Startscreen ({navigation}) {
         <View style={StyleSheet.container}>
             <Text style={styles.text}>Welcome to HealthWise</Text>
             <View style={styles.press}>
-            <Pressable onPress={() => navigation.navigate("login")} style={styles.button}>
+            <Pressable onPress={() => navigation.navigate("Loginchoice")} style={styles.button}>
                 <Text style={styles.press}>Login your account</Text>
             </Pressable>
             <Pressable onPress={() => navigation.navigate("register")} style={styles.button}>

@@ -1,52 +1,122 @@
-
-import { useState } from "react";
-import { View } from "react-native";
-import { SearchBar } from './SearchBar';
-import { SearchResultsList } from './SearchResultsList';
-import { data } from "./data"
-import { DiseaseInfoPage } from "./DiseaseInfoPage";
-import { TouchableWithoutFeedback } from "react-native";
-import { Keyboard } from "react-native";
+import React from "react";
+import { View, Text, TouchableOpacity, StyleSheet, Pressable } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import SearchBar from "./SearchBar";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { ScrollView } from "react-native";
 
-export default function SearchScreen() {
-  const [results, setResults] = useState(data);
-  const filterResults = (searchText) => {
-    const filteredResults = data.filter((d) => d.heading.toLowerCase().includes(searchText.toLowerCase()))
-    setResults(filteredResults)
-  }
+const SearchScreen = () => {
+  const navigation = useNavigation();
 
-  const [Disease, setDisease] = useState();
-  if (Disease) {
-    return <DiseaseInfoPage diseaseInfo={Disease} goBack={() => setDisease(undefined)} />
-  } else {
+  return (
+    <SafeAreaView style={styles.app}>
+      <SearchBar/>
+      <ScrollView showsVerticalScrollIndicator={false}>
+      <Text style={styles.title}>Multiple Sclerosis Resources</Text>
+      <View style={styles.buttonGrid}>
+        <TouchableOpacity
+          style={[styles.gridButton, {borderTopWidth: 5, borderTopColor: '#83bf85',}]}
+          onPress={() => navigation.navigate("IllnessEducation")}
+        >
+          <Text style={styles.gridTitle}>Illness Education</Text>
+          <Text style={styles.gridText}>
+            Insights into the causes, progression, and treatment of MS,
+            including the latest research in immunology.
+          </Text>
+        </TouchableOpacity>
 
-    return (
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-        <SafeAreaView style={styles.app} className="App">
-         <View style={styles.searchBarContainer} className="search-bar-container">
-          <SearchBar setResults={filterResults} />
-          <SearchResultsList results={results} onSelect={setDisease} />
-         </View>
-        </SafeAreaView>
-      </TouchableWithoutFeedback>
-    );
-  }
-}
-const styles = {
-  app: {
-    backgroundColor: "#fff",
-    height: "100%",
-    width: "100%",
-  }
-  ,
-  searchBarContainer: {
-    paddingTop: "30vh",
-    width: "100%",
-    margin: "auto",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    minWidth: "250px",
-  }
-}
+        <TouchableOpacity
+          style={[styles.gridButton, {borderTopWidth: 5, borderTopColor:'#529d9a',}]}
+          onPress={() => navigation.navigate("Activities")}
+        >
+          <Text style={styles.gridTitle}>Activities</Text>
+          <Text style={styles.gridText}>
+            Explore exercise plans generally used for MS patients.
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[styles.gridButton, {borderTopWidth: 5, borderTopColor:'#c3655b',}]}
+          onPress={() => navigation.navigate("DietaryAdvice")}
+        >
+          <Text style={styles.gridTitle}>Dietary Advice</Text>
+          <Text style={styles.gridText}>
+            Nutritional guidance to help inflammation, neuroprotection, and gut
+            health.
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[styles.gridButton, {borderTopWidth: 5, borderTopColor:'#ffa72b',}]}
+          onPress={() => navigation.navigate("MentalHealth")}
+        >
+          <Text style={styles.gridTitle}>Mental Health</Text>
+          <Text style={styles.gridText}>
+            Evidence-based psychological strategies, and mindfulness techniques.
+          </Text>
+        </TouchableOpacity>
+      </View>
+      </ScrollView>
+      <Pressable style={styles.button} onPress={() => navigation.navigate("homescreen")}>
+            <Text style={{textAlign:'center', fontSize:17,color:'white'}}>Dr.Bot</Text>
+      </Pressable>
+    </SafeAreaView>
+  );
+};
+
+const styles = StyleSheet.create({
+    app: {
+      flex: 1,
+      backgroundColor: '#f5f9fc',
+      padding: 20,
+    },
+    title: {
+      fontSize: 24,
+      fontWeight: "bold",
+      textAlign: "center",
+      marginVertical: 20,
+    },
+    buttonGrid: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: 'space-between',
+      marginTop: 30,
+    },
+    gridButton: {
+      backgroundColor: '#fff',
+      borderRadius: 10,
+      padding: 25,
+      width: '48%', // Two columns
+      minHeight: 180,
+      justifyContent: 'center',
+      alignItems: 'center',
+      textAlign: 'center',
+      marginBottom: 20,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.1,
+      shadowRadius: 8,
+      elevation: 4,
+    },
+    gridTitle: {
+      fontSize: 18,
+      fontWeight: "bold",
+      color: 'black',
+    },
+    gridText: {
+      fontSize: 14,
+      color: 'black',
+      textAlign: "center",
+    },
+    button: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingHorizontal: 20, 
+      paddingVertical: 10,
+      borderRadius: 20,
+      backgroundColor: 'black',
+      marginTop: 5,
+      alignSelf: 'flex-end',
+    },
+});
+export default SearchScreen;

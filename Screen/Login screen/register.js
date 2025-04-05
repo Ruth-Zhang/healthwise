@@ -1,8 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
+
 import { StyleSheet, Text, View, Button, TextInput,KeyboardAvoidingView,Platform, Pressable} from 'react-native';
 import { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
- export default function register () {
+
+ export default function register ({navigation}) {
   const [email, setEmail]=useState("");
   const [password, setPassword]=useState("");
   const [errors, setErrors]= useState({});
@@ -23,7 +24,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
     }
   };
     return(
-        <SafeAreaView styles={{backgroundColor:'white'}}>
+        <SafeAreaView>
             <View style={styles.form}>
               <Text style={{fontWeight:"bold", fontSize: 25,justifyContent: "center",marginTop:-50,marginBottom:20}}>Let's set up your account</Text>
           <Text style={styles.label}>Email address</Text>
@@ -37,9 +38,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
           {errors.password ? <text style={styles.errorText}>{errors.password}</text> : null}
           <Text style={styles.label}>Birthday</Text>
           <TextInput style={styles.input} placeholder="dd/mm/yy" />
+          <Text style={styles.label}>Monitor name</Text>
+          <TextInput style={styles.input} placeholder="enter your moniter name if any" />
           <View style={styles.press}>
-          <Pressable onPress={() => handleSubmit} style={styles.button}>
-            <Text style={[styles.button,{padding:8}]}>Create your account</Text>
+          <Pressable onPress={()=>navigation.navigate("Success")}style={styles.button}>
+            <Text style={styles.button}>  Create your account</Text>
           </Pressable>
           </View>
           </View>
@@ -50,7 +53,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
  const styles = StyleSheet.create({
     container: {
       flex:1,
-      backgroundColor: 'white',
+      backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
       paddingHorizontal: 20,
@@ -82,24 +85,24 @@ import { SafeAreaView } from 'react-native-safe-area-context';
         borderRadius: 5,
       },
       button:{
-        width: 'auto',
+        width: 190,
+        height: 35,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: 'lightblue',
-        textAlign:'center',
         fontSize: 19,
         borderRadius: 10,
-        shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 0.2,
-        shadowRadius: 4,
+        paddingTop:5,
+        shadowColor: "#000",
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
     },
     press:{
       display: 'flex',
-      width: 'auto',
-      justifyContent:'center',
-      alignItems:'center',
-      textAlign:'center',
-      borderRadius: 10,
-      marginTop:'5%'
+      width: '100%',
+justifyContent:'center',
+alignItems:'center',
+borderRadius: 10,
     }
 });

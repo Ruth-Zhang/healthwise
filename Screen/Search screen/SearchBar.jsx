@@ -1,50 +1,58 @@
-import React from "react";
-import {useState} from "react";
-import {data} from "./data"
+import React, { useState } from "react";
+import { View, TextInput, Button, StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { TouchableOpacity } from "react-native";
 import { AntDesign } from '@expo/vector-icons'
-import { TextInput, View, StyleSheet, borderRadius } from "react-native";
 
-export const SearchBar = ({ setResults }) => {
-  const [input, setInput] = useState("");
+export default function SearchBar() {
+  const navigation = useNavigation();
+  const [searchTerm, setSearchTerm] = useState("");
 
-const fetchData = (value) => {
-return data;  
-  
-};
+  const handleSearch = () => {
+    if (searchTerm.trim()) {
+      navigation.navigate("SearchResult", { query: searchTerm });
+    }
+  };
 
-const handleChange = (value) => {
-  setResults(value)
-  setInput(value)
-  fetchData(value)
-};
-
-  return ( 
-  <View style={styles.container}>
-  <AntDesign name= "search1" size={20}/>
-  <TextInput onChangeText={(text)=>handleChange(text)} style={styles.search} value={input} type="text" placeholder="Type to search..." ></TextInput>
-  </View>
+  return (
+    <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        placeholder="Search MS-related topics..."
+        value={searchTerm}
+        onChangeText={setSearchTerm}
+      />
+      <TouchableOpacity style={styles.searchButton} onPress={handleSearch}>
+        <AntDesign name="search1" size={20} color="white"/>
+      </TouchableOpacity>
+    </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
-    container: {
-        display: 'flex',
-        flexDirection: 'row',
-	    alignItems: 'center',
-	    backgroundColor: '#edededfc',
-	    borderRadius: 8,
-	    padding: 10,
-	    marginBottom: 15,
-        marginTop: '5%',
-        marginRight: 15,
-        marginLeft: 15,
-    },
-    search: {
-        border: 'none',
-	    backgroundColor: "#edededfc",
-	    width: "90%",
-        height: '50px',
-        fontSize: 20,
-        borderRadius: 10
-    },
+  container: {
+    flexDirection: 'row',
+    marginBottom: 30,
+    backgroundColor: '#fff',
+    borderRadius: 25,
+    overflow: 'hidden',
+    shadowColor: 'rgba(147, 37, 37, 1)',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 5,
+  },
+  input: {
+    flex: 1,
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    fontSize: 16,
+    backgroundColor: '#fff',
+  },
+  searchButton: {
+    backgroundColor: '#4b79cf',
+    paddingHorizontal: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });

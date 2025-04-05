@@ -13,6 +13,15 @@ import Register from './Screen/Login screen/register';
 import Forgetpassword from './Screen/Login screen/Forgetpassword';
 import Setnewpassword from './Screen/Login screen/Setnewpassword';
 import TabNavigator from './Screen/TabNavigator';
+import Loginchoice from './Screen/Login screen/Loginchoice';
+import Monitorlogin from './Screen/Login screen/Monitorlogin';
+import Success from './Screen/Login screen/Success';
+import homescreen from './Screen/chatbot/homescreen';
+import IllnessEducation from './Screen/Search screen/IllnessEducation';
+import Activities from './Screen/Search screen/Activities';
+import DietaryAdvice from './Screen/Search screen/DietaryAdvice';
+import MentalHealth from './Screen/Search screen/MentalHealth';
+import SearchResult from './Screen/Search screen/SearchResult';
 
 const Stack=createNativeStackNavigator ();
 
@@ -40,7 +49,17 @@ export default function App() {
             <Stack.Screen name='register' component={Register}/>
             <Stack.Screen name='Forgetpassword' component={Forgetpassword}/>
             <Stack.Screen name='Setnewpassword' component={Setnewpassword}/>
+            <Stack.Screen name='homescreen' component={homescreen}/>
+            <Stack.Screen name='Loginchoice'component={Loginchoice}/>
+            <Stack.Screen name='Success' component={Success}/>
+            <Stack.Screen name='Monitorlogin' component={Monitorlogin}/>
             <Stack.Screen options={{ headerShown: false }} name= 'tabnavigator'component={TabNavigator}/>
+           
+            <Stack.Screen name="IllnessEducation" component={IllnessEducation} />
+            <Stack.Screen name="Activities" component={Activities} />
+            <Stack.Screen name="DietaryAdvice" component={DietaryAdvice} />
+            <Stack.Screen name="MentalHealth" component={MentalHealth} />
+            <Stack.Screen name="SearchResult" component={SearchResult} />
         </Stack.Navigator>
     </NavigationContainer>
   );
