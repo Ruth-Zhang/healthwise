@@ -101,7 +101,7 @@ const Activities = () => {
 
         <TouchableOpacity
           style={styles.backButton}
-          onPress={() => navigation.navigate("SearchScreen")}
+          onPress={() => navigation.navigate("tabnavigator")}
         >
           <Text style={styles.backButtonText}>Back to Home</Text>
         </TouchableOpacity>

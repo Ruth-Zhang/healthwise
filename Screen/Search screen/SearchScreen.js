@@ -58,7 +58,7 @@ const SearchScreen = () => {
       </View>
       </ScrollView>
       <Pressable style={styles.button} onPress={() => navigation.navigate("homescreen")}>
-            <Text style={{textAlign:'center', fontSize:17,color:'white'}}>Dr.Bot</Text>
+            <Text style={{textAlign:'center', fontSize:17,color:'black'}}>Dr.Bot</Text>
       </Pressable>
     </SafeAreaView>
   );
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     app: {
       flex: 1,
       backgroundColor: '#f5f9fc',
-      padding: 20,
+      paddingHorizontal:20
     },
     title: {
       fontSize: 24,
@@ -114,8 +114,8 @@ const styles = StyleSheet.create({
       paddingHorizontal: 20, 
       paddingVertical: 10,
       borderRadius: 20,
-      backgroundColor: 'black',
-      marginTop: 5,
+      backgroundColor: 'lightblue',
+      marginTop: 10,
       alignSelf: 'flex-end',
     },
 });

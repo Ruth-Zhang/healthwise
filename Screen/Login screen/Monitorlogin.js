@@ -15,7 +15,7 @@ export default function Monitorlogin({navigation}) {
           <TextInput style={styles.input} placeholder="Enter your username" />
           <Text style={styles.label}>Monitor code</Text>
           <TextInput style={styles.input} placeholder="Enter your monitor code" />
-          <Button title="Login" onPress={() => handleSubmit} />
+          <Button title="Login" onPress={() => navigation.navigate("tabnavigator")} />
           <StatusBar style="auto"/>
         </View>
     </KeyboardAvoidingView>

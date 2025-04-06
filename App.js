@@ -1,9 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Button, TextInput,KeyboardAvoidingView,Platform } from 'react-native';
-import SearchScreen from "./Screen/Search screen/SearchScreen";
-import ProfileScreen from "./Screen/ProfileScreen";
-import NoteScreen from "./Screen/Note Screen/NoteScreen";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -22,6 +18,7 @@ import Activities from './Screen/Search screen/Activities';
 import DietaryAdvice from './Screen/Search screen/DietaryAdvice';
 import MentalHealth from './Screen/Search screen/MentalHealth';
 import SearchResult from './Screen/Search screen/SearchResult';
+import { View } from 'react-native';
 
 const Stack=createNativeStackNavigator ();
 

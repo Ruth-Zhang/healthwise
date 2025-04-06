@@ -24,7 +24,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
     }
   };
     return(
-        <SafeAreaView>
+        <SafeAreaView style={{backgroundColor:'white', height:'100%'}}>
             <View style={styles.form}>
               <Text style={{fontWeight:"bold", fontSize: 25,justifyContent: "center",marginTop:-50,marginBottom:20}}>Let's set up your account</Text>
           <Text style={styles.label}>Email address</Text>
@@ -85,14 +85,15 @@ import { SafeAreaView } from 'react-native-safe-area-context';
         borderRadius: 5,
       },
       button:{
-        width: 190,
+        width: 'auto',
         height: 35,
-        alignItems: 'center',
+        alignSelf: 'center',
+        textAlign:'center',
         justifyContent: 'center',
         backgroundColor: 'lightblue',
         fontSize: 19,
         borderRadius: 10,
-        paddingTop:5,
+        padding:5,
         shadowColor: "#000",
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.3,

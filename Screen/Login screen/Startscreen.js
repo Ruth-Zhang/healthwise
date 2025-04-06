@@ -2,7 +2,7 @@ import {View, Text, StyleSheet,Button, Pressable, SafeAreaView} from "react-nati
 
 export default function Startscreen ({navigation}) {
     return (
-        <SafeAreaView>
+        <SafeAreaView style={{backgroundColor:'#f5f9fc', height:'100%'}}>
         <View style={StyleSheet.container}>
             <Text style={styles.text}>Welcome to HealthWise</Text>
             <View style={styles.press}>
@@ -24,9 +24,10 @@ export default function Startscreen ({navigation}) {
 const styles = StyleSheet.create({
     container: {
         display: 'flex',
-    width: "100%",
+        width: "100%",
+        height:'100%',
         flex:10,
-        backgroundColor: '#fff',
+        backgroundColor: 'white',
         alignItems: 'center',
         justifyContent: 'center',
 },

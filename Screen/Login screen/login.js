@@ -34,7 +34,7 @@ export default function login({navigation}) {
           <Text style={styles.label}>Password</Text>
           <TextInput style={styles.input} placeholder="Enter your password" secureTextEntry value={password} onChangeText={setPassword} />
           {errors.password ? <text style={styles.errorText}>{errors.password}</text> : null}
-          <Button title="Login" onPress={() => handleSubmit} />
+          <Button title="Login" onPress={() => navigation.navigate("tabnavigator")}/>
           <StatusBar style="auto"/>
           <Button style={{fontSize:15}} title ="Forgot password?" onPress={()=>navigation.navigate("Forgetpassword")}/>
         </View>
